@@ -9,11 +9,18 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    private let networkService = NetworkService()
+    private var fetcher: DataFetcher = NetworkDataFetcher(netorking: NetworkService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
-        networkService.getFeed()
+        
+        fetcher.getFeed { (feedResponse) in
+            guard let feedResponse = feedResponse else { return }
+            feedResponse.items.map { (feedItem) in
+                print(feedItem.postId)
+            }
+        }
+        
     }
 }

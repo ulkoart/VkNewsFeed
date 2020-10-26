@@ -15,7 +15,7 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         authService = SceneDelegate.shared().authService
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBlue
     }
 
     @IBAction func singInTouch(_ sender: UIButton) {
